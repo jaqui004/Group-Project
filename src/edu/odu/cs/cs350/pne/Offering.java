@@ -1,4 +1,4 @@
-
+package edu.odu.cs.cs350.pne;
 public class Offering {
 	
 	// Made up of a course, a list of sections, an overall enrollment cap, 
