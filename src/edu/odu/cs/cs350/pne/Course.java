@@ -4,41 +4,57 @@ public class Course {
 	// data on what the course is about
 
 	
-	// Made up of a course number and a subject
+	// Made up of a course number, a subject, and a description
 	private String subj;
-	private int courNum;
+	private String courNum;
+	private String title;
+	private int credits;
+	private int hours; 
 
 	// Constructor
 	public Course(){
 		courNum = 0;
 		subj = "";
+		title = "";
+		credits = 0;
+		hours = 0;
 	}
 
 	// Alternate constructor
 	// May need to change based on how inputs will be read from the
 	// directories
-	public Course(String subjInput, int numInput){
+	public Course(String subjInput, String numInput, String titleInput,
+	              int creditInput, int hourInput){
 		subj = subjInput;
 		courNum = numInput;
+		title = descInput;
+		credits = creditInput;
+		hours = hourInput;
 	}
 
 	// Variable accessor functions
-	public int getCourNum(){return courNum};
-	public string getSubj(){return subj};
+	public String getCourNum(){return courNum;}
+	public String getSubj(){return subj;}
+	public String getTitle(){return title;}
+	public int getCredits(){return credits;}
+	public int getHours(){return hours;}
 
 	// Variable mutator functions
-	public void setCourNum(int numInput){courNum = numInput};
-	public void setSubj(String subjInput){subj = subjInput};
+	public void setCourNum(String numInput){courNum = numInput;}
+	public void setSubj(String subjInput){subj = subjInput;}
+	public void setTitle(String titleInput){desc = titleInput;}
+	public void setCredits(int creditInpt){credits = creditInput;}
+	public void setHours(int hoursInput){hours = setHours;}
 
 	// Clone function
 	public Course clone(){
-		Course courseClone = new Course(subj, courseNum);
+		Course courseClone = new Course(subj, courseNum, title, credits);
 		return courseClone;
 	}
 
 	// Returns the subject and course number as a single string
 	public String toString(){
-		return subj + " " + courNum.toString();
+		return subj + " " + courNum + ": " desc;
 	}
 	
 }
