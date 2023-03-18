@@ -32,6 +32,10 @@ public class Section {
 	private int waitList;
 	private int waitListRemain;
 
+
+
+
+
 	// Section constructor
 	// Read in order:
 	// enrolled, CRN, subject, 
@@ -72,7 +76,58 @@ public class Section {
 		waitListRemain = waitRemainInput;
 	}
 
+
+
+
+
 	// Accessor functions
+	public Course getCourse(){return secCour.clone();}
+	public String getCRN(){return CRN;}
+	public int getXListCap(){return xListCap;}
+	public int getXListGroup(){return xListGroup;}
+	public int getEnrolled(){return enrolled;}
+	public int getEnrollmentCap(){return enrollmentCap;}
+	// ENR?
+	// Link??
+	public String getBuilding(){return building;}
+	public String getRoom(){return room;}
+	// Vector
+	// Schedule type
+	// Campus 
+	// INSM
+	// Print
+	public String getMeetTime(){return meetTime;}
+	public String getMeetDays(){return meetDays;}
+	// Override
+	public String getInstructor(){return instructor;}
+	public String getPTRMStart(){return ptrmStart;}
+	public String getPTRMEnd(){return ptrmEnd;}
+	public String getWaitListCap(){return waitListCap;}
+	public String getWaitList(){return waitList;}
+	public String getWaitRemain(){return waitRemain;}
+
+
+
+
 
 	// Mutator functions
+
+
+
+
+
+	// Adds a snapshot to this sections vector of snapshots
+	public void addSnapshot(Snapshot snapIn){
+		snapshotVector.add(snapIn.clone());
+	}
+
+
+
+
+	// Creates a clone of a section
+	public Section clone(){
+		// Create new section object with variables
+		// Make a copy of the snapshot vector
+		// return clone
+	}
 }
