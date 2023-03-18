@@ -19,7 +19,7 @@ public class Section {
 	private String room;
 	private Vector<Snapshot> snapshotVector= new Vector<>();
 	// Schedule type
-	// Campus 
+	private String campus; 
 	// INSM
 	// Print
 	private String meetTime;
@@ -93,7 +93,7 @@ public class Section {
 	public String getRoom(){return room;}
 	// Vector
 	// Schedule type
-	// Campus 
+	public String getCampus(){return campus;}
 	// INSM
 	// Print
 	public String getMeetTime(){return meetTime;}
@@ -127,7 +127,21 @@ public class Section {
 	// Creates a clone of a section
 	public Section clone(){
 		// Create new section object with variables
-		// Make a copy of the snapshot vector
+		Section secClone = new Section(enrolled, CRN, secCour.clone(), 
+						   xListCap, /*ENR, link, scheduletype, */
+						   campus, /*INSM, print,*/ meetTime, meetDays
+						   building, room, /*override,*/ instructor,
+						   ptrmStart, ptrmEnd, waitListCap, waitList,
+						   waitListRemain);
+
+		// Make a copy of the snapshot vector and uses a loop to fill it
+		// with snapshots
+		Vector<snapshot> snapVecClone = new Vector<>();
+		for(int i = 0; i < snapshotVector.size(); i++){
+			snapVecClone.add(snapshotVector.get(i).clone());
+		}
+
 		// return clone
+		return secClone;
 	}
 }
