@@ -11,20 +11,41 @@ public class Offering {
 	private Vector<Section> sectionVector = new Vector<Section>();
 	private int overEnrollCap;
 	private int overEnrolled;
-	// xListGroup?
+	private int xListGroup;
 
+	// constructor
+	public Offering(Course courOffInput, int overCapInput, int overEnrolledInput, 
+					int xListGroupInput){
+
+			courOff = courOffInput.clone();
+			overEnrollCap = overCapInput;
+			overEnrolled = overEnrolledInput;
+			xListGroup = xListGroupInput;
+
+			// Should overall enrolled be calculated from input courses?
+	}
 
 	// Function to add sections to the offering object
-	public addSection(){
-		// Add section to vector
-		// Update overall enrolled
+	public void addSection(Section secIn){
+		sectionVector.add(secIn.clone());
+
+		// Update overall enrolled?
 	}
 
 
 
 	// Accessor functions
-
-
+	public Course getCourse(){return courOff.clone();}
+	public int getOverEnrolledCap(){return overEnrolledCap;}
+	public int getOverEnrolled(){return overEnrolled;}
+	public int getXListGroup(){return xListGroup;}
 
 	// Mutation functions
+	public Course setCourse(Course courIn){courOff = courIn.clone();}
+	public int setOverEnrolledCap(int overCapIn){overEnrolledCap = overCapIn;}
+	public int setOverEnrolled(int overEnrolledIn){overEnrolled = overEnrolledIn;}
+	public int getXListGroup(int xListGroupIn){xListGroup = xListGroupIn;}
+
+
+	// Clone function
 }
