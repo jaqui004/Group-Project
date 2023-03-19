@@ -2,6 +2,7 @@ package edu.odu.cs.cs350.pne;
 
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Semester {
 
@@ -26,18 +27,21 @@ public class Semester {
         }
     }
     
-    void semDate(int regDate, int regDeadine)  {
+    void semDate(String [] semesterDir, int regDate, int regDeadine) throws FileNotFoundException  {
         //*Reads the dates.txt document that contains the 1st day of registration
         // and the date of the add deadline (last day of registration) */
         
        // loop through semester array to check each folder
         //check for dates document in each semester directory-- throw exception if missing dates.txt
         //read the dates in txt--> store into regDate and regDeadline
+
+        String file = "dates.txt";
+        Scanner in = new Scanner(new File (file));
         
-       //*  for (String i : semesterDir) {
-    
+            for (String i : semesterDir) {
+                
+            }
         
-    
     }
     
     void getEnrollmentAsOf() {
