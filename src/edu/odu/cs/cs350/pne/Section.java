@@ -136,12 +136,22 @@ public class Section {
 
 		// Make a copy of the snapshot vector and uses a loop to fill it
 		// with snapshots
-		Vector<sSnapshot> snapVecClone = new Vector<Snapshot>();
+		Vector<Snapshot> snapVecClone = new Vector<Snapshot>();
 		for(int i = 0; i < snapshotVector.size(); i++){
 			snapVecClone.add(snapshotVector.get(i).clone());
 		}
 
 		// return clone
 		return secClone;
+	}
+
+	// Prints out information of the section
+	public String toString(){
+		cout << secCour.toString() << " - CRN " << CRN << endl 
+			 << "Instructor: " << instructor << ", Location: " << campus << " campus, " << building << " " << room << endl
+			 << "Meeting Time: " << meetDays << " " << meetTime << endl
+			 << "Start Date: " << ptrmStart << ", End Date: " << ptrmEnd << endl 
+			 << "Currently Enrolled: " << enrolled << ", Enrollment Cap: " << enrollmentCap << ", xList Group: " << xListGroup << ", xList Cap: " << xListCap << endl
+			 << "Wait List Cap: " << waitListCap << ", Wait List: " << waitList << ", Wait List Remaining: " << waitListRemain << endl;
 	}
 }
