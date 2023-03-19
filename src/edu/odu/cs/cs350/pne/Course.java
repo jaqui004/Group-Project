@@ -55,7 +55,7 @@ public class Course {
 
 	// Returns the subject and course number as a single string
 	public String toString(){
-		return subj + " " + courNum + ": " desc;
+		return subj + " " + courNum + " - " desc;
 	}
 
 	// Equivalence check function
