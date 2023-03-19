@@ -48,4 +48,18 @@ public class Offering {
 
 
 	// Clone function
+
+
+	// Outputs the data in the offering
+	public String toString(){
+		cout << "Offering: " << courOff.toString() << endl 
+			 << "Overall Enrollment Cap: " << overEnrollCap << ", Overall Enrollment: " << overEnrolled << ", xList Group: " << xListgroup << endl
+			 << "Sections: " << endl << endl;
+		
+		// Loops through the section vector and prints the info from each section
+		for(int i = 0; i < sectionVector.size(); i++){
+			cout << sectionVector.get(i).toString() << endl << endl;
+		}
+
+	}
 }
