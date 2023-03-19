@@ -17,7 +17,7 @@ public class Section {
 	// Link
 	private String building;
 	private String room;
-	private Vector<Snapshot> snapshotVector= new Vector<>();
+	private Vector<Snapshot> snapshotVector= new Vector<Snapshot>();
 	// Schedule type
 	private String campus; 
 	// INSM
@@ -136,7 +136,7 @@ public class Section {
 
 		// Make a copy of the snapshot vector and uses a loop to fill it
 		// with snapshots
-		Vector<snapshot> snapVecClone = new Vector<>();
+		Vector<sSnapshot> snapVecClone = new Vector<Snapshot>();
 		for(int i = 0; i < snapshotVector.size(); i++){
 			snapVecClone.add(snapshotVector.get(i).clone());
 		}
