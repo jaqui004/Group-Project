@@ -1,4 +1,4 @@
-package edu.odu.cs.cs350.pne;
+package main.java.edu.odu.cs;
 
 import java.util.Scanner;
 import java.io.File;

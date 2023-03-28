@@ -1,4 +1,4 @@
-package edu.odu.cs.cs350.pne;
+package main.java.edu.odu.cs;
 public class Section {
 	
 	// Part of an offering object used to account for 
