@@ -7,7 +7,16 @@ public class Snapshot {
 	private String date;
 	private int enrolled;
 
-	public Snapshot(){
-		
+	// Constructor
+	public Snapshot(String dateInput, int enrolledInput){
+		date = dateInput;
+		enrolled = enrolledInput;
 	}
+
+	// Creates a clone of the snapshot
+	public Snapshot clone(){
+		Snapshot snapClone = new Snapshot(date, enrolled);
+		return snapClone;
+	}
+
 }
