@@ -13,6 +13,10 @@ public class Snapshot {
 		enrolled = enrolledInput;
 	}
 
+	// Accessor functions
+	public String getDate(){return date;}
+	public String getEnrolled(){return enrolled;}
+
 	// Creates a clone of the snapshot
 	public Snapshot clone(){
 		Snapshot snapClone = new Snapshot(date, enrolled);
