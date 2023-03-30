@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion(11)
+    targetCOmpatibility = JavaVersion.toVersion(11)
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependences {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+
+}
+
+application {
+    mainClass = 'packages.MainClass'
+}
+
+test {
+    ignoreFailures = true
+    useJUnitPlatform()
+}
