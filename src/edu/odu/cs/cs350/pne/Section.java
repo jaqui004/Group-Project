@@ -91,7 +91,6 @@ public class Section {
 	// Link??
 	public String getBuilding(){return building;}
 	public String getRoom(){return room;}
-	// Vector
 	// Schedule type
 	public String getCampus(){return campus;}
 	// INSM
@@ -105,6 +104,10 @@ public class Section {
 	public String getWaitListCap(){return waitListCap;}
 	public String getWaitList(){return waitList;}
 	public String getWaitRemain(){return waitRemain;}
+
+	public Iterator<Vector> getSnapIterator(){
+		return snapshotVector.iterator();
+	}
 
 
 
