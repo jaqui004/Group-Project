@@ -1,4 +1,5 @@
-package edu.odu.cs.cs350.pne;
+package main.java.edu.odu.cs.cs350.pne;
+
 public class Offering {
 	
 	// Represents a class that a student could choose to

@@ -1,4 +1,5 @@
-package edu.odu.cs.cs350.pne;
+package main.java.edu.odu.cs.cs350.pne;
+
 public class Course {
 	// Used as part of an offering or section object to store
 	// data on what the course is about
