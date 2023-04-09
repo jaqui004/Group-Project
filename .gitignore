@@ -1,0 +1,8 @@
+#Compiled class file
+**/*.class
+
+#vscode files
+**/.vscode
+
+#jar files
+**/.jar
