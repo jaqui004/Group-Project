@@ -1,0 +1,2 @@
+rootProject.name='CS-360-Group-Project'
+include "Semester.java", "History.java"
