@@ -1,17 +1,22 @@
 plugins {
     id 'java'
+<<<<<<< HEAD
 
 }
 
 java {
     sourceCompatibility = JavaVersion.toVersion(11)
     targetCOmpatibility = JavaVersion.toVersion(11)
+=======
+    id 'application'
+>>>>>>> ed0ed431d6abf9a2a62e76492b45909d85a05dd2
 }
 
 repositories {
     mavenCentral()
 }
 
+<<<<<<< HEAD
 dependences {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
@@ -20,6 +25,15 @@ dependences {
 
 application {
     mainClass = 'packages.MainClass'
+=======
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+}
+
+application { // Allows ./graldew run =path-to-test-data
+    mainClass = 'edu.odu.cs.cs350.pne.History'
+>>>>>>> ed0ed431d6abf9a2a62e76492b45909d85a05dd2
 }
 
 test {
