@@ -6,3 +6,12 @@
 
 #jar files
 **/.jar
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+# Ignore bins
+bin
