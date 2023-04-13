@@ -35,7 +35,6 @@ java {
 application {
     // Define the main class for the application.
     mainClass = 'edu.odu.cs.cs350.pne.History'
->>>>>>> ed0ed431d6abf9a2a62e76492b45909d85a05dd2
 }
 
 tasks.named('test') {
