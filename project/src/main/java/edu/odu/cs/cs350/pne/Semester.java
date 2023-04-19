@@ -1,4 +1,4 @@
-package edu.odu.cs.cs350.pne;
+package main.java.edu.odu.cs.cs350.pne;
 
 import java.util.Scanner;
 import java.io.File;
@@ -10,21 +10,40 @@ public class Semester {
     int regDate; //the date of first day of pre-registration
     int regDeadline; //the date of the last day of regristation 
     
+    int main (String[] args){
+        for (String semesterPath : args) {
+            File semesterDir = new File(semesterPath);
+            readSemester(semesterDir);
+        }
+    }
+    void readSemester(String directoryPath)
+    {
+        File historyDir = new File(directoryPath);
         
+        /*for (semesterPath.length > 0)
+        {
+           //Path to the directory
+           File semesterDir = new File(semesterPath); //Path to directory
+        }
+
+        File[] listOFiles = semesterDir.listFiles();
+        String[] fileNames = new String[listOfFiles.length];
+
+        for (int i = 0; i < listOfFiles.length; i++)
+        {
+            if (listOfFiles[i].isFile())
+            {
+                fileNames[i] = listOfFiles[i].getName();
+            }
+        }
+    }
     void getSemester(int semesterCode) {
         //*Goes through all of the dictories within history. Semester codes
         // are six digits. FInal two digits will be "10" for Fall, "20" for spring &
         // "30" for summer*/
-    
         //Array to store all of the semester directories. 
-        String path = "/src/History";
-        File file = new File(path);
-    
-        String [] semesterDir = file.list();
+            
         
-        for (String element: semesterDir){ // for testing later
-            System.out.println(element);
-        }
     }
     
     void semDate(String [] semesterDir, int regDate, int regDeadine) throws FileNotFoundException  {
