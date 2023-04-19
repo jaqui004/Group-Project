@@ -13,13 +13,16 @@ public class Semester {
     int main (String[] args){
         for (String semesterPath : args) {
             File semesterDir = new File(semesterPath);
-            readSemester(semesterDir);
+            readSemester();
         }
+
+        return 0;
     }
-    void readSemester(String directoryPath)
+
+    void readSemester()
     {
-        File historyDir = new File(directoryPath);
-        
+
+
         /*for (semesterPath.length > 0)
         {
            //Path to the directory
@@ -35,8 +38,21 @@ public class Semester {
             {
                 fileNames[i] = listOfFiles[i].getName();
             }
-        }
+        } */
     }
+
+    void checkDates() {
+        String fileName = "dates.txt";
+        File directory = new File (directoryPath);
+        File file = new File(directory, "dates.txt");
+
+        if (file.exist()) {
+    
+        }
+            return 0;
+    
+    }
+    
     void getSemester(int semesterCode) {
         //*Goes through all of the dictories within history. Semester codes
         // are six digits. FInal two digits will be "10" for Fall, "20" for spring &
@@ -55,11 +71,11 @@ public class Semester {
         //read the dates in txt--> store into regDate and regDeadline
 
         String file = "dates.txt";
-        Scanner in = new Scanner(new File (file));
+       /*  Scanner in = new Scanner(new File (file));
         
             for (String i : semesterDir) {
                 
-            }
+            }  */
         
     }
     
