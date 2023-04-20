@@ -15,7 +15,7 @@ public class Course {
 
 	// Constructor
 	public Course(){
-		courNum = 0;
+		courNum = "0";
 		subj = "";
 		title = "";
 		credits = 0;
@@ -29,7 +29,7 @@ public class Course {
 	              int creditInput, int hourInput){
 		subj = subjInput;
 		courNum = numInput;
-		title = descInput;
+		title = titleInput;
 		credits = creditInput;
 		hours = hourInput;
 	}
@@ -44,19 +44,19 @@ public class Course {
 	// Variable mutator functions
 	public void setCourNum(String numInput){courNum = numInput;}
 	public void setSubj(String subjInput){subj = subjInput;}
-	public void setTitle(String titleInput){desc = titleInput;}
-	public void setCredits(int creditInpt){credits = creditInput;}
-	public void setHours(int hoursInput){hours = setHours;}
+	public void setTitle(String titleInput){title = titleInput;}
+	public void setCredits(int creditInput){credits = creditInput;}
+	public void setHours(int hoursInput){hours = hoursInput;}
 
 	// Clone function
 	public Course clone(){
-		Course courseClone = new Course(subj, courseNum, title, credits);
+		Course courseClone = new Course(subj, courNum, title, credits, hours);
 		return courseClone;
 	}
 
 	// Returns the subject and course number as a single string
 	public String toString(){
-		return subj + " " + courNum + " - " desc;
+		return subj + " " + courNum + " - " + title;
 	}
 
 	// Equivalence check function
