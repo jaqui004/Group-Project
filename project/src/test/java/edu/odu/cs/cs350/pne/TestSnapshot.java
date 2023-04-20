@@ -1,4 +1,4 @@
-package edu.odu.cs.cs350.pne;
+package test.java.edu.odu.cs.cs350.pne;
 
 import org.junit.jupiter.api.Test;
 
