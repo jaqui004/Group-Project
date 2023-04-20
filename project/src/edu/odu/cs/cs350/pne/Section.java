@@ -1,4 +1,5 @@
 package edu.odu.cs.cs350.pne;
+import java.util.Vector;
 
 public class Section {
 	
@@ -41,13 +42,13 @@ public class Section {
 	// Read in order:
 	// enrolled, CRN, subject, 
 	// Part of course
-		// course number, title, credits, hours, 
+	// course number, title, credits, hours, 
 	// xListCap,
 	// ENR?, link, schedulteType, campus, INSM, print?, meetTime, meetDays, 
 	// building, room, override?, instructor, overallCap, ptrmStart,
 	// ptrmEnd, waitListCap, waitList, waitListRemain
 	public Section(int enrollInput, String crnInput, Course courInput, 
-	              int xCapInput /*, ENR, link, scheduleType, */
+	              int xCapInput, int xlistCap, /*, ENR, link, scheduleType, */
 				  String campInput/*INSM, print*/, String meetTimeInput,
 				  String meetDaysInput, String buildInput,
 				  String roomInput,/*override*/ String instructorInput,
@@ -66,7 +67,7 @@ public class Section {
 		// print
 		meetTime = meetTimeInput;
 		meetDays = meetDaysInput;
-		building = buildInput
+		building = buildInput;
 		room = roomInput;
 		// override
 		instructor = instructorInput;
@@ -88,6 +89,10 @@ public class Section {
 	public int getXListGroup(){return xListGroup;}
 	public int getEnrolled(){return enrolled;}
 	public int getEnrollmentCap(){return enrollmentCap;}
+	public int getWaitListCap(){return waitListCap;}
+	public int getWaitList(){return waitList;}
+	public int getWaitRemain(){return waitListRemain;}
+	
 	// ENR?
 	// Link??
 	public String getBuilding(){return building;}
@@ -103,9 +108,9 @@ public class Section {
 	public String getInstructor(){return instructor;}
 	public String getPTRMStart(){return ptrmStart;}
 	public String getPTRMEnd(){return ptrmEnd;}
-	public String getWaitListCap(){return waitListCap;}
-	public String getWaitList(){return waitList;}
-	public String getWaitRemain(){return waitRemain;}
+	//public String getWaitListCap(){return waitListCap;}
+	// public String getWaitList(){return waitList;}
+	// public String getWaitRemain(){return waitRemain;}
 
 
 
@@ -123,14 +128,14 @@ public class Section {
 	}
 
 
-
+		
 
 	// Creates a clone of a section
 	public Section clone(){
 		// Create new section object with variables
 		Section secClone = new Section(enrolled, CRN, secCour.clone(), 
 						   xListCap, /*ENR, link, scheduletype, */
-						   campus, /*INSM, print,*/ meetTime, meetDays
+						   campus, /*INSM, print,*/ meetTime, meetDays,
 						   building, room, /*override,*/ instructor,
 						   ptrmStart, ptrmEnd, waitListCap, waitList,
 						   waitListRemain);
@@ -147,12 +152,17 @@ public class Section {
 	}
 
 	// Prints out information of the section
-	public String toString(){
-		cout << secCour.toString() << " - CRN " << CRN << endl 
-			 << "Instructor: " << instructor << ", Location: " << campus << " campus, " << building << " " << room << endl
-			 << "Meeting Time: " << meetDays << " " << meetTime << endl
-			 << "Start Date: " << ptrmStart << ", End Date: " << ptrmEnd << endl 
-			 << "Currently Enrolled: " << enrolled << ", Enrollment Cap: " << enrollmentCap << ", xList Group: " << xListGroup << ", xList Cap: " << xListCap << endl
-			 << "Wait List Cap: " << waitListCap << ", Wait List: " << waitList << ", Wait List Remaining: " << waitListRemain << endl;
+	
+    public void testOutPut(){ // i changed the name of this because we are moving it to TestSection
+							// and it was causing an annoying error	
+		System.out.println(secCour.toString() + " - CRN " + CRN); 
+		System.out.println("Instructor: " + instructor + ", Location: " + campus + " campus, " + building + " " + room);
+	    System.out.println("Meeting Time: " + meetDays + " " + meetTime);
+		System.out.println("Start Date: " + ptrmStart + ", End Date: " + ptrmEnd); 
+		System.out.println("Currently Enrolled: " + enrolled + ", Enrollment Cap: " + enrollmentCap + ", xList Group: " + xListGroup + ", xList Cap: " + xListCap);
+		System.out.println("Wait List Cap: " + waitListCap + ", Wait List: " + waitList + ", Wait List Remaining: " + waitListRemain);
 	}
+	
 }
+	
+
