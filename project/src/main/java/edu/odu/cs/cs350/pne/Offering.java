@@ -1,5 +1,7 @@
 package edu.odu.cs.cs350.pne;
 
+import java.util.Vector;
+
 public class Offering {
 	
 	// Represents a class that a student could choose to
@@ -37,15 +39,15 @@ public class Offering {
 
 	// Accessor functions
 	public Course getCourse(){return courOff.clone();}
-	public int getOverEnrolledCap(){return overEnrolledCap;}
+	public int getOverEnrolledCap(){return overEnrollCap;}
 	public int getOverEnrolled(){return overEnrolled;}
 	public int getXListGroup(){return xListGroup;}
 
 	// Mutation functions
-	public Course setCourse(Course courIn){courOff = courIn.clone();}
-	public int setOverEnrolledCap(int overCapIn){overEnrolledCap = overCapIn;}
-	public int setOverEnrolled(int overEnrolledIn){overEnrolled = overEnrolledIn;}
-	public int getXListGroup(int xListGroupIn){xListGroup = xListGroupIn;}
+	public void setCourse(Course courIn){courOff = courIn;}
+	public void setOverEnrolledCap(int overCapIn){overEnrollCap = overCapIn;}
+	public void setOverEnrolled(int overEnrolledIn){overEnrolled = overEnrolledIn;}
+	public void getXListGroup(int xListGroupIn){xListGroup = xListGroupIn;}
 
 
 	// Clone function
@@ -53,14 +55,15 @@ public class Offering {
 
 	// Outputs the data in the offering
 	public String toString(){
-		cout << "Offering: " << courOff.toString() << endl 
-			 << "Overall Enrollment Cap: " << overEnrollCap << ", Overall Enrollment: " << overEnrolled << ", xList Group: " << xListgroup << endl
-			 << "Sections: " << endl << endl;
+		return("Offering: " + courOff.toString() 
+			 + "Overall Enrollment Cap: " + overEnrollCap + ", Overall Enrollment: " + overEnrolled
+			+", xList Group: " + xListGroup
+			 + "Sections: ");
 		
 		// Loops through the section vector and prints the info from each section
-		for(int i = 0; i < sectionVector.size(); i++){
-			cout << sectionVector.get(i).toString() << endl << endl;
-		}
+		// for(int i = 0; i < sectionVector.size(); i++){
+		// 	System.out.println(sectionVector.get(i).toString()+ "\n"+"\n");
+		// }
 
 	}
 }

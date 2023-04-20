@@ -1,6 +1,6 @@
 package edu.odu.cs.cs350.pne;
 
-import java.util.Scanner;
+// mport java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -35,12 +35,13 @@ public class Semester {
         //check for dates document in each semester directory-- throw exception if missing dates.txt
         //read the dates in txt--> store into regDate and regDeadline
 
-        String file = "dates.txt";
-        Scanner in = new Scanner(new File (file));
+    //     String file = "dates.txt";
+    //     Scanner in = new Scanner(new File (file));
         
-            for (String i : semesterDir) {
+    //        for (String i : semesterDir) {
                 
-            }
+
+    //         }
         
     }
     

@@ -1,5 +1,7 @@
 package edu.odu.cs.cs350.pne;
 
+import java.util.Vector;
+
 public class Section {
 	
 	// Part of an offering object used to account for 
@@ -47,17 +49,19 @@ public class Section {
 	// building, room, override?, instructor, overallCap, ptrmStart,
 	// ptrmEnd, waitListCap, waitList, waitListRemain
 	public Section(int enrollInput, String crnInput, Course courInput, 
-	              int xCapInput /*, ENR, link, scheduleType, */
+	              int xCapInput,
+				  /*, ENR, link, scheduleType, */
 				  String campInput/*INSM, print*/, String meetTimeInput,
 				  String meetDaysInput, String buildInput,
 				  String roomInput,/*override*/ String instructorInput,
 				  String ptrmStartInput, String ptrmEndInput,
-				  int waitCapInput, int waitInput, int waitRemainInput){
+				  int waitCapInput, int waitInput, int waitRemainInput)
+	{
 
 		enrolled = enrollInput;
 		CRN = crnInput;
 		secCour = courInput;
-		xlistCap = xCapInput;
+		xListCap = xCapInput;
 		// ENR
 		// Link
 		// scheduletype
@@ -66,7 +70,7 @@ public class Section {
 		// print
 		meetTime = meetTimeInput;
 		meetDays = meetDaysInput;
-		building = buildInput
+		building = buildInput;
 		room = roomInput;
 		// override
 		instructor = instructorInput;
@@ -103,9 +107,9 @@ public class Section {
 	public String getInstructor(){return instructor;}
 	public String getPTRMStart(){return ptrmStart;}
 	public String getPTRMEnd(){return ptrmEnd;}
-	public String getWaitListCap(){return waitListCap;}
-	public String getWaitList(){return waitList;}
-	public String getWaitRemain(){return waitRemain;}
+	public int getWaitListCap(){return waitListCap;}
+	public int getWaitList(){return waitList;}
+	public int getWaitRemain(){return waitListRemain;}
 
 
 
@@ -130,7 +134,7 @@ public class Section {
 		// Create new section object with variables
 		Section secClone = new Section(enrolled, CRN, secCour.clone(), 
 						   xListCap, /*ENR, link, scheduletype, */
-						   campus, /*INSM, print,*/ meetTime, meetDays
+						   campus, /*INSM, print,*/ meetTime, meetDays,
 						   building, room, /*override,*/ instructor,
 						   ptrmStart, ptrmEnd, waitListCap, waitList,
 						   waitListRemain);
@@ -148,11 +152,14 @@ public class Section {
 
 	// Prints out information of the section
 	public String toString(){
-		cout << secCour.toString() << " - CRN " << CRN << endl 
-			 << "Instructor: " << instructor << ", Location: " << campus << " campus, " << building << " " << room << endl
-			 << "Meeting Time: " << meetDays << " " << meetTime << endl
-			 << "Start Date: " << ptrmStart << ", End Date: " << ptrmEnd << endl 
-			 << "Currently Enrolled: " << enrolled << ", Enrollment Cap: " << enrollmentCap << ", xList Group: " << xListGroup << ", xList Cap: " << xListCap << endl
-			 << "Wait List Cap: " << waitListCap << ", Wait List: " << waitList << ", Wait List Remaining: " << waitListRemain << endl;
+		return (secCour.toString() + " - CRN " + CRN 
+			 + "Instructor: " + instructor + ", Location: " + campus + " campus, " 
+			 + building + " " + room + " "
+			 + "Meeting Time: " + meetDays + " " + meetTime + " "
+			 + "Start Date: " + ptrmStart + ", End Date: " + ptrmEnd + " " 
+			 + "Currently Enrolled: " + enrolled + ", Enrollment Cap: " + enrollmentCap
+			 + ", xList Group: " + xListGroup + ", xList Cap: " + xListCap + " "
+			 + "Wait List Cap: " + waitListCap + ", Wait List: " 
+			 + waitList + ", Wait List Remaining: " + waitListRemain + " ");
 	}
 }
