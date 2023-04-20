@@ -1,6 +1,6 @@
-package main.java.edu.odu.cs.cs350.pne;
+package edu.odu.cs.cs350.pne;
 
-// mport java.util.Scanner;
+import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -73,7 +73,7 @@ public class Semester {
         String file = "dates.txt";
        /*  Scanner in = new Scanner(new File (file));
         
-    //        for (String i : semesterDir) {
+            for (String i : semesterDir) {
                 
             }  */
         
