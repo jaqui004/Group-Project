@@ -18,7 +18,7 @@ public class Snapshot {
 	*@param dateIn the date yyyy-mm-dd format
 	*/
 	public Snapshot(String semDir, String dateIn){
-		this.targetFile= new File("./project/src/data/"+semDir+"/"+dateIn);
+		this.targetFile= new File("./project/src/test/data/"+semDir+"/"+dateIn);
 		this.date = dateIn;
 		this.semesterDirectory= semDir;
 	
