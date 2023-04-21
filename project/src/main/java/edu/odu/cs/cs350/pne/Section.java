@@ -15,75 +15,25 @@ public class Section {
 	private int xListCap;
 	private int xListGroup;
 	private int enrolled;
-	private int enrollmentCap;
-	// ENR
-	// Link
+	private String link;
 	private String building;
 	private String room;
 	private Vector<Snapshot> snapshotVector= new Vector<Snapshot>();
-	// Schedule type
-	private String campus; 
-	// INSM
-	// Print
-	private String meetTime;
-	private String meetDays;
-	// Override
-	private String instructor;
-	private String ptrmStart;
-	private String ptrmEnd;
-	private int waitListCap;
-	private int waitList;
-	private int waitListRemain;
-
-
-
+	
 
 
 	// Section constructor
-	// Read in order:
-	// enrolled, CRN, subject, 
-	// Part of course
-		// course number, title, credits, hours, 
-	// xListCap,
-	// ENR?, link, schedulteType, campus, INSM, print?, meetTime, meetDays, 
-	// building, room, override?, instructor, overallCap, ptrmStart,
-	// ptrmEnd, waitListCap, waitList, waitListRemain
-	public Section(int enrollInput, String crnInput, Course courInput, 
-	              int xCapInput,
-				  /*, ENR, link, scheduleType, */
-				  String campInput/*INSM, print*/, String meetTimeInput,
-				  String meetDaysInput, String buildInput,
-				  String roomInput,/*override*/ String instructorInput,
-				  String ptrmStartInput, String ptrmEndInput,
-				  int waitCapInput, int waitInput, int waitRemainInput)
-	{
-
-		enrolled = enrollInput;
-		CRN = crnInput;
-		secCour = courInput;
-		xListCap = xCapInput;
-		// ENR
-		// Link
-		// scheduletype
-		campus = campInput;
-		// INSM
-		// print
-		meetTime = meetTimeInput;
-		meetDays = meetDaysInput;
-		building = buildInput;
-		room = roomInput;
-		// override
-		instructor = instructorInput;
-		ptrmStart = ptrmStartInput;
-		ptrmEnd = ptrmEndInput;
-		waitListCap = waitCapInput;
-		waitList = waitInput;
-		waitListRemain = waitRemainInput;
+	public Section(){
+		this.secCour = new Course();
+		this.CRN = "";
+		this.xListCap = 0;
+		this.xListGroup = 0;
+		this.enrolled = 0;
+		this.link = "";
+		this.building = "";
+		this.room = "";
+		this.snapshotVector = new Vector <Snapshot>();
 	}
-
-
-
-
 
 	// Accessor functions
 	public Course getCourse(){return secCour.clone();}
@@ -91,39 +41,34 @@ public class Section {
 	public int getXListCap(){return xListCap;}
 	public int getXListGroup(){return xListGroup;}
 	public int getEnrolled(){return enrolled;}
-	public int getEnrollmentCap(){return enrollmentCap;}
-	// ENR?
-	// Link??
+	public String getLink(){return link;}
 	public String getBuilding(){return building;}
 	public String getRoom(){return room;}
-	// Vector
-	// Schedule type
-	public String getCampus(){return campus;}
-	// INSM
-	// Print
-	public String getMeetTime(){return meetTime;}
-	public String getMeetDays(){return meetDays;}
-	// Override
-	public String getInstructor(){return instructor;}
-	public String getPTRMStart(){return ptrmStart;}
-	public String getPTRMEnd(){return ptrmEnd;}
-	public int getWaitListCap(){return waitListCap;}
-	public int getWaitList(){return waitList;}
-	public int getWaitRemain(){return waitListRemain;}
 
+	/**
+	 * Get the snapshot for a certain date
+	 * @param dateDir the semesterCode
+	 * @param date the date yyyy-mm-dd format
+	 */
+	public Snapshot getEnrollmentAsOf(String dateDir, String date){
+		Snapshot snapE = new Snapshot(dateDir, date);
+		
+		//loop through vector of snapshots and return if found
+		for (int i =0; i < snapshotVector.size(); i++){
+				if(this.snapshotVector.elementAt(i)== snapE){
+					snapE = this.snapshotVector.get(i);
+				}
+			
+		}
+		return snapE;
 
-
-
+	}
 
 	// Mutator functions
 
-
-
-
-
 	// Adds a snapshot to this sections vector of snapshots
 	public void addSnapshot(Snapshot snapIn){
-		snapshotVector.add(snapIn.clone());
+		snapshotVector.add(snapIn);
 	}
 
 
