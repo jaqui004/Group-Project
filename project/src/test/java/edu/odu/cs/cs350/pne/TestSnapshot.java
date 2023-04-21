@@ -13,17 +13,18 @@ import static org.hamcrest.Matchers.*;
 public class TestSnapshot{
     //set default values for testing
     public String defaultDate = "2020-04-01";
-    public Path default_TargetDir = Paths.get("./project/src/test/data/");
-    public int defaultEnrollment = 0;
+    public File default_TargetFile = new File("./project/src/test/data/202010/2020-04-01");
+    public String default_semDir = "202010";
     
 
     //test for constructor
     @Test
     public void testSnapshotConstructor(){
-        Snapshot snpshot1 = new Snapshot(defaultDate, default_TargetDir, defaultEnrollment); 
+        Snapshot snpshot1 = new Snapshot(default_semDir, defaultDate); 
         assertEquals(snpshot1.getDate(), "2020-04-01");
-        assertEquals(snpshot1.getTargetDir(), Paths.get("./project/src/test/data"));
-        assertEquals(snpshot1.getEnrollment(), 0);
+        assertEquals(snpshot1.getTargetFile(), default_TargetFile);
+        assertEquals(snpshot1.getSemesterDirectory(), "202010");
     }
+
     
 }
