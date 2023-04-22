@@ -36,31 +36,32 @@ public class Section {
 	}
 
 	// Accessor functions
-	public Course getCourse(){return secCour.clone();}
-	public String getCRN(){return CRN;}
-	public int getXListCap(){return xListCap;}
-	public int getXListGroup(){return xListGroup;}
-	public int getEnrolled(){return enrolled;}
-	public String getLink(){return link;}
-	public String getBuilding(){return building;}
-	public String getRoom(){return room;}
+	public Course getCourse(){return this.secCour;}
+	public String getCRN(){return this.CRN;}
+	public int getXListCap(){return this.xListCap;}
+	public int getXListGroup(){return this.xListGroup;}
+	public int getEnrolled(){return this.enrolled;}
+	public String getLink(){return this.link;}
+	public String getBuilding(){return this.building;}
+	public String getRoom(){return this.room;}
+	public Vector <Snapshot>  getSnapshotVec(){return this.snapshotVector;}
 
 	/**
 	 * Get the snapshot for a certain date
 	 * @param dateDir the semesterCode
 	 * @param date the date yyyy-mm-dd format
 	 */
-	public Snapshot getEnrollmentAsOf(String dateDir, String date){
-		Snapshot snapE = new Snapshot(dateDir, date);
+	public  Snapshot getEnrollmentAsOf(String dateDir, String date){
 		
 		//loop through vector of snapshots and return if found
-		for (int i =0; i < snapshotVector.size(); i++){
-				if(this.snapshotVector.elementAt(i)== snapE){
-					snapE = this.snapshotVector.get(i);
-				}
+		for (Snapshot snapEn : this.getSnapshotVec()){
+				if(snapEn.getSemesterDirectory()== dateDir
+				&& snapEn.getDate()== date)
+					return snapEn;		
 			
 		}
-		return snapE;
+		return null;
+		
 
 	}
 
