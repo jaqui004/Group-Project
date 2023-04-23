@@ -1,14 +1,30 @@
 package edu.odu.cs.cs350.pne;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class TestSnapshot{
-    public String defaultStr = "April 20, 2023";
-    public int defaultEnrolled = 20;
+    //set default values for testing
+    public String defaultDate = "2020-04-01";
+    public File default_TargetFile = new File("./project/src/test/data/202010/2020-04-01");
+    public String default_semDir = "202010";
+    
 
-
+    //test for constructor
     @Test
     public void testSnapshotConstructor(){
-        
+        Snapshot snpshot1 = new Snapshot(default_semDir, defaultDate); 
+        assertEquals(snpshot1.getDate(), "2020-04-01");
+        assertEquals(snpshot1.getTargetFile(), default_TargetFile);
+        assertEquals(snpshot1.getSemesterDirectory(), "202010");
     }
+
+    
 }
