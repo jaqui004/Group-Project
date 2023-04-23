@@ -1,6 +1,10 @@
 package edu.odu.cs.cs350.pne;
 
-import java.util.Vector;
+import java.io.File;
+import java.util.LinkedList;
+import java.util.LinkedList;
+//import java.util.Vector;
+import java.util.Scanner;
 
 public class Section {
 	
@@ -18,33 +22,63 @@ public class Section {
 	private String link;
 	private String building;
 	private String room;
-	private Vector<Snapshot> snapshotVector= new Vector<Snapshot>();
+	private LinkedList<Snapshot> snapshotList= new LinkedList<Snapshot>();
+	
 	
 
 
 	// Section constructor
 	public Section(){
-		this.secCour = new Course();
-		this.CRN = "";
-		this.xListCap = 0;
-		this.xListGroup = 0;
-		this.enrolled = 0;
-		this.link = "";
-		this.building = "";
-		this.room = "";
-		this.snapshotVector = new Vector <Snapshot>();
+		secCour = new Course();
+		CRN = "";
+		xListCap = 0;
+		xListGroup = 0;
+		enrolled = 0;
+		link = "";
+		building = "";
+		room = "";
+		snapshotList = new LinkedList <Snapshot>();
 	}
 
+	public Section(String semestDir, String dateExct ){
+		snapshotList = new LinkedList <Snapshot>();
+		snapshotList.add(new Snapshot(semestDir, dateExct));
+		secCour = new Course();
+		CRN = "";
+		xListCap = 0;
+		xListGroup = 0;
+		enrolled = 0;
+		link = "";
+		building = "";
+		room = "";
+	}
+
+	public Section(String CRN2, Course crse, int xListCap2, int enroll, String link2,
+		int xListGroup2, String building2, String room2, LinkedList<Snapshot> snapE){
+				CRN=CRN2;
+				secCour=crse;
+				xListCap=xListCap2;
+				enrolled=enroll;
+				link=link2;
+				xListGroup= xListGroup2;
+				building=building2;
+				room=room2;
+				for(Snapshot tmp : snapE ){
+					snapshotList.add(tmp);
+				}
+		}
+
+
 	// Accessor functions
-	public Course getCourse(){return this.secCour;}
-	public String getCRN(){return this.CRN;}
-	public int getXListCap(){return this.xListCap;}
-	public int getXListGroup(){return this.xListGroup;}
-	public int getEnrolled(){return this.enrolled;}
-	public String getLink(){return this.link;}
-	public String getBuilding(){return this.building;}
-	public String getRoom(){return this.room;}
-	public Vector <Snapshot>  getSnapshotVec(){return this.snapshotVector;}
+	public Course getCourse(){return secCour;}
+	public String getCRN(){return CRN;}
+	public int getXListCap(){return xListCap;}
+	public int getXListGroup(){return xListGroup;}
+	public int getEnrolled(){return enrolled;}
+	public String getLink(){return link;}
+	public String getBuilding(){return building;}
+	public String getRoom(){return room;}
+	public LinkedList <Snapshot>  getSnapshotList(){return snapshotList;}
 
 	/**
 	 * Get the snapshot for a certain date
@@ -53,8 +87,9 @@ public class Section {
 	 */
 	public  Snapshot getEnrollmentAsOf(String dateDir, String date){
 		
-		//loop through vector of snapshots and return if found
-		for (Snapshot snapEn : this.getSnapshotVec()){
+		//loop through list of snapshots and return if found else return null
+		
+		for (Snapshot snapEn : this.getSnapshotList()){
 				if(snapEn.getSemesterDirectory()== dateDir
 				&& snapEn.getDate()== date)
 					return snapEn;		
@@ -67,45 +102,112 @@ public class Section {
 
 	// Mutator functions
 
-	// Adds a snapshot to this sections vector of snapshots
+	// Adds a snapshot to this sections list of snapshots
 	public void addSnapshot(Snapshot snapIn){
-		snapshotVector.add(snapIn);
+		snapshotList.add(snapIn);
 	}
 
+	/**
+	 * Read in values making up section
+	 * @param snapsSht -the certain snapshot which to read from
+	 */
+	public void read_SectionRecords(Snapshot snapsSht){
+		//use scanner to read and initialze records
+		
+		Scanner x;
+		boolean found = false;
+		int y =0;
+		int count =0;
+		
+		
+		//Setup exception handler
+		try
+		{
+			x = new Scanner(new File(snapsSht.getTargetFile().getPath()));
+			//x.useDelimiter("[,]");
+		
+			
+			while(x.hasNext() && !found)
+			{
+				
+				String tmp=x.nextLine();
+				Scanner strScan = new Scanner(tmp).useDelimiter(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+
+				while (strScan.hasNext()){
+					String token = strScan.next().trim().replaceAll("\"", "");
+					CRN = token;
+				}
+				strScan.close();
+				//String tmp=x.next().trim().replaceAll("\"","");
+				// Scanner tmpScan = new Scanner(tmp).useDelimiter("");
+				//move count up when value has been read stop once all have been read
+				while(count!=7){
+					//String tmp=x.next().trim().replaceAll("\"","");
+					//conditions for when at certian positions
+					//for CRN
+					if(y==1){
+						this.CRN= tmp;
+						count++;
+					}
+					//course subj
+					if(y==2){
+						this.secCour.setSubj(tmp);
+						count++;	
+					}
+					//course number
+					if(y==3){
+						this.secCour.setCourNum(tmp);
+						count++;
+					}
+					
+				
+				}
+			}
+			
+			x.close();
+		}
+		
+		catch(Exception e)
+		{
+
+		}
+
+	}
 
 
 
 	// Creates a clone of a section
-	public Section clone(){
-		// Create new section object with variables
-		Section secClone = new Section(enrolled, CRN, secCour.clone(), 
-						   xListCap, /*ENR, link, scheduletype, */
-						   campus, /*INSM, print,*/ meetTime, meetDays,
-						   building, room, /*override,*/ instructor,
-						   ptrmStart, ptrmEnd, waitListCap, waitList,
-						   waitListRemain);
+	// public Section clone(){
+	// 	// Create new section object with variables
+		 
+	// 	//(enrolled, CRN, secCour.clone(), 
+	// 	// 				   xListCap, /*ENR, link, scheduletype, */
+	// 	// 				   campus, /*INSM, print,*/ meetTime, meetDays,
+	// 	// 				   building, room, /*override,*/ instructor,
+	// 	// 				   ptrmStart, ptrmEnd, waitListCap, waitList,
+	// 	// 				   waitListRemain);
 
-		// Make a copy of the snapshot vector and uses a loop to fill it
-		// with snapshots
-		Vector<Snapshot> snapVecClone = new Vector<Snapshot>();
-		for(int i = 0; i < snapshotVector.size(); i++){
-			snapVecClone.add(snapshotVector.get(i).clone());
-		}
+	// 	// // Make a copy of the snapshot vector and uses a loop to fill it
+	// 	// // with snapshots
+	// 	// Vector<Snapshot> snapVecClone = new Vector<Snapshot>();
+	// 	// for(int i = 0; i < snapshotVector.size(); i++){
+	// 	// 	snapVecClone.add(snapshotVector.get(i).clone());
+	// 	// }
 
-		// return clone
-		return secClone;
-	}
+	// 	// return clone
+	// 	return secClone;
+	// }
 
-	// Prints out information of the section
-	public String toString(){
-		return (secCour.toString() + " - CRN " + CRN 
-			 + "Instructor: " + instructor + ", Location: " + campus + " campus, " 
-			 + building + " " + room + " "
-			 + "Meeting Time: " + meetDays + " " + meetTime + " "
-			 + "Start Date: " + ptrmStart + ", End Date: " + ptrmEnd + " " 
-			 + "Currently Enrolled: " + enrolled + ", Enrollment Cap: " + enrollmentCap
-			 + ", xList Group: " + xListGroup + ", xList Cap: " + xListCap + " "
-			 + "Wait List Cap: " + waitListCap + ", Wait List: " 
-			 + waitList + ", Wait List Remaining: " + waitListRemain + " ");
-	}
+	// // Prints out information of the section
+	// public String toString(){
+	// 	return (secCour.toString() + " - CRN " + CRN 
+	// 		 + "Instructor: " + instructor + ", Location: " + campus + " campus, " 
+	// 		 + building + " " + room + " "
+	// 		 + "Meeting Time: " + meetDays + " " + meetTime + " "
+	// 		 + "Start Date: " + ptrmStart + ", End Date: " + ptrmEnd + " " 
+	// 		 + "Currently Enrolled: " + enrolled + ", Enrollment Cap: " + enrollmentCap
+	// 		 + ", xList Group: " + xListGroup + ", xList Cap: " + xListCap + " "
+	// 		 + "Wait List Cap: " + waitListCap + ", Wait List: " 
+	// 		 + waitList + ", Wait List Remaining: " + waitListRemain + " ");
+	// }
 }
