@@ -18,16 +18,16 @@ public class Snapshot {
 	*@param dateIn the date yyyy-mm-dd format
 	*/
 	public Snapshot(String semDir, String dateIn){
-		this.targetFile= new File("./project/src/test/data/"+semDir+"/"+dateIn);
-		this.date = dateIn;
-		this.semesterDirectory= semDir;
+		targetFile= new File("./project/src/test/data/"+semDir+"/"+dateIn);
+		date = dateIn;
+		semesterDirectory= semDir;
 	
 	}
 
 	//accesors
-	public String getDate(){return this.date;}
-	public File getTargetFile(){return this.targetFile;}
-	public String getSemesterDirectory(){return this.semesterDirectory;}
+	public String getDate(){return date;}
+	public File getTargetFile(){return targetFile;}
+	public String getSemesterDirectory(){return semesterDirectory;}
 
 	//mutators
 	
