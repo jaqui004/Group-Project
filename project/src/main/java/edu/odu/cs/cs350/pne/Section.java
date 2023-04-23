@@ -2,7 +2,7 @@ package edu.odu.cs.cs350.pne;
 
 import java.io.File;
 import java.util.LinkedList;
-import java.util.LinkedList;
+
 //import java.util.Vector;
 import java.util.Scanner;
 

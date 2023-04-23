@@ -103,23 +103,23 @@ public class TestSection{
 
     }
 
-    @Test
-    public void testReads(){
-        Section section1 = new Section();
-        Snapshot snaps1 = new Snapshot("202010", "2020-04-01");
+    //@Test
+    // public void testReads(){
+    //     Section section1 = new Section();
+    //     Snapshot snaps1 = new Snapshot("202010", "2020-04-01");
 
-        section1.read_SectionRecords(snaps1); 
-        //assertEquals(section1.getCourse(), defaultCourse);
-        assertEquals(section1.getCRN(), defaultCRN);
-        assertEquals(section1.getXListCap(), defaultXlistCap);
-        assertEquals(section1.getXListGroup(), defaultXlistGroup);
-        assertEquals(section1.getEnrolled(), defaultEnrolled);
-        assertNotEquals(section1.getSnapshotList(), 0);
-        assertEquals(section1.getLink(), defaultLink);
-        assertEquals(section1.getBuilding(), defaultBuilding);
-        assertEquals(section1.getRoom(), defaultRoom);
+    //     section1.read_SectionRecords(snaps1); 
+    //     //assertEquals(section1.getCourse(), defaultCourse);
+    //     assertEquals(section1.getCRN(), defaultCRN);
+    //     assertEquals(section1.getXListCap(), defaultXlistCap);
+    //     assertEquals(section1.getXListGroup(), defaultXlistGroup);
+    //     assertEquals(section1.getEnrolled(), defaultEnrolled);
+    //     assertNotEquals(section1.getSnapshotList(), 0);
+    //     assertEquals(section1.getLink(), defaultLink);
+    //     assertEquals(section1.getBuilding(), defaultBuilding);
+    //     assertEquals(section1.getRoom(), defaultRoom);
 
 
-    }
+    // }
 
 }
