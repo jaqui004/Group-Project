@@ -34,6 +34,15 @@ public class Course {
 		hours = hourInput;
 	}
 
+	public Course(String subjIn, String crseNum){
+		subj=subjIn;
+		courNum=crseNum;
+		title = "";
+		credits=0;
+		hours=0;
+		
+	}
+
 	// Variable accessor functions
 	public String getCourNum(){return courNum;}
 	public String getSubj(){return subj;}
@@ -50,7 +59,7 @@ public class Course {
 
 	// Clone function
 	public Course clone(){
-		Course courseClone = new Course(subj, courNum, title, credits, hours);
+		Course courseClone = new Course(subj, courNum);
 		return courseClone;
 	}
 
