@@ -5,7 +5,11 @@ import org.junit.jupiter.api.Test;
 public class TestHistory{
     
     @Test
-    public void summaryOutput() {
+    public void testHistoryConstr(){
+        History history1 = new History();
+    }
+    @Test
+    public void testSummaryOutput() {
         
     }
 }
