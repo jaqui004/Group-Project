@@ -24,6 +24,14 @@ public class Snapshot {
 	
 	}
 
+	public Snapshot(String semDir, String dateIn, File targetFIn){
+		targetFile= targetFIn;
+		date = dateIn;
+		semesterDirectory= semDir;
+	
+	}
+
+
 	//accesors
 	public String getDate(){return date;}
 	public File getTargetFile(){return targetFile;}
