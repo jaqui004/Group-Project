@@ -96,13 +96,14 @@ public class Section {
 			Snapshot current = iter.next();
 			if(current.getSemesterDirectory()== dateDir
 				&& current.getDate()== date){				
-					return current;	
+					return current;
+					
 				}
 				else{
-					found =false;
+					found =true;
 				}
 				
-				
+				return current;
 			}
 			return null;
 			
@@ -129,6 +130,7 @@ public class Section {
 	public Iterator<Snapshot> iterator(){
 		return snapshotList.iterator();
 	}  
+
 	/**
 	 * Read in values making up section
 	 * @param snapsSht -the certain snapshot which to read from
