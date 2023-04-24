@@ -1,6 +1,6 @@
 package edu.odu.cs.cs350.pne;
 
-import java.util.Vector;
+import java.util.LinkedList;
 
 public class Offering {
 	
@@ -11,26 +11,40 @@ public class Offering {
 	// Made up of a course, a list of sections, an overall enrollment cap, 
 	// an overall enrollment number, and a cross list group
 	private Course courOff;
-	private Vector<Section> sectionVector = new Vector<Section>();
+	private LinkedList<Section> sectionList = new LinkedList<Section>();
 	private int overEnrollCap;
 	private int overEnrolled;
 	private int xListGroup;
 
 	// constructor
 	public Offering(Course courOffInput, int overCapInput, int overEnrolledInput, 
-					int xListGroupInput){
+					int xListGroupInput, LinkedList<Section> sectList){
 
 			courOff = courOffInput.clone();
 			overEnrollCap = overCapInput;
 			overEnrolled = overEnrolledInput;
 			xListGroup = xListGroupInput;
 
+			sectionList=new LinkedList<Section>();
+			for (Section sect : sectList){
+				sectionList.add(sect);
+				
+			}
 			// Should overall enrolled be calculated from input courses?
 	}
+	public Offering(){
+
+			courOff = new Course();
+			overEnrollCap = 0;
+			overEnrolled = 0;
+			xListGroup = 0;
+			sectionList=new LinkedList<Section>();
+	}
+			
 
 	// Function to add sections to the offering object
 	public void addSection(Section secIn){
-		sectionVector.add(secIn.clone());
+		sectionList.add(secIn);
 
 		// Update overall enrolled?
 	}
