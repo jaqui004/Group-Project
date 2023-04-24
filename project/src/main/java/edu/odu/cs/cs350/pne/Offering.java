@@ -30,8 +30,9 @@ public class Offering {
 
 	// Function to add sections to the offering object
 	public void addSection(Section secIn){
-		sectionVector.add(secIn.clone());
-
+		sectionVector.add(secIn);
+	
+		// sectionVector.add(secIn.clone());
 		// Update overall enrolled?
 	}
 
