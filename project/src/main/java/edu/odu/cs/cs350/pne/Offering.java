@@ -44,8 +44,9 @@ public class Offering {
 
 	// Function to add sections to the offering object
 	public void addSection(Section secIn){
-		sectionList.add(secIn);
-
+		sectionVector.add(secIn);
+	
+		// sectionVector.add(secIn.clone());
 		// Update overall enrolled?
 	}
 

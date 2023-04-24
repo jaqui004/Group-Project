@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
-//import java.util.Vector;
+import java.util.Vector;
 import java.util.Scanner;
 
 public class Section {
@@ -17,6 +17,8 @@ public class Section {
 	// (campus and maybe class), and a list of snapshots
 	private Course secCour;
 	private String CRN;
+	private String subj;
+	private String courNum;
 	private int xListCap;
 	private int xListGroup;
 	private int enrolled;
@@ -24,6 +26,7 @@ public class Section {
 	private String building;
 	private String room;
 	private LinkedList<Snapshot> snapshotList= new LinkedList<Snapshot>();
+	private Vector<Section> sectionVector = new Vector<Section>();
 	
 	
 
@@ -70,6 +73,11 @@ public class Section {
 				}
 		}
 
+	public Section(String CRN, String subj, String courNum) { //constructors
+		this.CRN = CRN;
+		this.subj = subj;
+		this.courNum = courNum;
+	}
 
 	// Accessor functions
 	public Course getCourse(){return secCour;}
@@ -81,7 +89,19 @@ public class Section {
 	public String getBuilding(){return building;}
 	public String getRoom(){return room;}
 	public LinkedList <Snapshot>  getSnapshotList(){return snapshotList;}
+	
+	// Set values functions
+	public void setCRN(String CRN) {
+		this.CRN = CRN;
+	}
 
+	public void setSubj(String subj) {
+		this.secCour.setSubj(subj);
+	}
+
+	public void setCourNum(String courNum) {
+		this.secCour.setCourNum(courNum);
+	}
 	/**
 	 * Get the snapshot for a certain date
 	 * @param dateDir the semesterCode
@@ -140,8 +160,8 @@ public class Section {
 		
 		Scanner x;
 		boolean found = false;
-		int y =0;
-		int count =0;
+		int y = 0;
+		int count  =0;
 		
 		
 		//Setup exception handler
@@ -157,22 +177,34 @@ public class Section {
 				String tmp=x.nextLine();
 				Scanner strScan = new Scanner(tmp).useDelimiter(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
 
+				CRN = null;  // new code start
+				String subj = null;
+				String courNum = null; // new code end
+
 				while (strScan.hasNext()){
 					String token = strScan.next().trim().replaceAll("\"", "");
+					if (count == 1) { // new code start
 					CRN = token;
+					} else if (count ==2) {
+						subj = token;
+					} else if (count == 3) {
+						courNum = token;
+					}
+					 count++; // new code end
 				}
 				strScan.close();
 				//String tmp=x.next().trim().replaceAll("\"","");
 				// Scanner tmpScan = new Scanner(tmp).useDelimiter("");
 				//move count up when value has been read stop once all have been read
-				while(count!=7){
+				//* while(count!=7){
 					//String tmp=x.next().trim().replaceAll("\"","");
 					//conditions for when at certian positions
-					//for CRN
+
+				//for CRN
 					if(y==1){
 						this.CRN= tmp;
 						count++;
-					}
+					} 
 					//course subj
 					if(y==2){
 						this.secCour.setSubj(tmp);
@@ -180,25 +212,26 @@ public class Section {
 					}
 					//course number
 					if(y==3){
-						this.secCour.setCourNum(tmp);
+					this.secCour.setCourNum(tmp);
 						count++;
-					}
+
+					Section section = new Section();
+					section.setCRN(this.CRN);
+					section.setSubj(this.secCour.getSubj());
+					section.setCourNum(this.secCour.getCourNum());
 					
+					sectionVector.add(section);
 				
-				}
+				}  
+
+				x.close();
 			}
-			
-			x.close();
 		}
-		
 		catch(Exception e)
 		{
-
+			System.out.println("File not found");
 		}
-
-	}
-
-
+	
 
 	// Creates a clone of a section
 	// public Section clone(){
