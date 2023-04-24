@@ -1,7 +1,9 @@
 package edu.odu.cs.cs350.pne;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ListIterator;
 //import java.util.Vector;
 import java.util.Scanner;
 
@@ -62,6 +64,7 @@ public class Section {
 				xListGroup= xListGroup2;
 				building=building2;
 				room=room2;
+				snapshotList= new LinkedList<Snapshot>();
 				for(Snapshot tmp : snapE ){
 					snapshotList.add(tmp);
 				}
@@ -87,17 +90,33 @@ public class Section {
 	public  Snapshot getEnrollmentAsOf(String dateDir, String date){
 		
 		//loop through list of snapshots and return if found else return null
-		
-		for (Snapshot snapEn : this.getSnapshotList()){
-				if(snapEn.getSemesterDirectory()== dateDir
-				&& snapEn.getDate()== date)
-					return snapEn;		
+		ListIterator <Snapshot> iter = snapshotList.listIterator();
+		boolean found=true;
+		while (iter.hasNext() || !found){
+			Snapshot current = iter.next();
+			if(current.getSemesterDirectory()== dateDir
+				&& current.getDate()== date){				
+					return current;	
+				}
+				else{
+					found =false;
+				}
+				
+				
+			}
+			return null;
 			
 		}
-		return null;
+		// for (Snapshot snapEn : this.getSnapshotList().iterator()){
+		// 		if(snapEn.getSemesterDirectory()== dateDir
+		// 		&& snapEn.getDate()== date)
+		// 			return snapEn;		
+			
+		// }
+		// return null;
 		
 
-	}
+		
 
 	// Mutator functions
 
@@ -106,6 +125,10 @@ public class Section {
 		snapshotList.add(snapIn);
 	}
 
+	////return iterator 
+	public Iterator<Snapshot> iterator(){
+		return snapshotList.iterator();
+	}  
 	/**
 	 * Read in values making up section
 	 * @param snapsSht -the certain snapshot which to read from
