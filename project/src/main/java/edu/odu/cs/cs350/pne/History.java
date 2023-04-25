@@ -3,7 +3,7 @@ package edu.odu.cs.cs350.pne;
 import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.ListIterator;
+//import java.util.ListIterator;
 
 //import javax.swing.text.html.HTMLDocument.Iterator;
 
@@ -75,17 +75,7 @@ public class History {
         File[] files = Dir.listFiles();
         int filenum = files.length;
         History hist = new History(getDir, getD, filenum);
-        
-
-        
-
-
-        
-
-       
-
-
-
+        hist.summaryReport();
 
     }
 

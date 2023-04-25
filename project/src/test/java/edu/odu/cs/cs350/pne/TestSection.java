@@ -107,7 +107,7 @@ public class TestSection{
     public void testReads(){
         Section section1 = new Section();
         Snapshot snaps1 = new Snapshot("202010", "2020-04-01");
-
+        section1.addSnapshot(snaps1);
         section1.read_SectionRecords(snaps1); 
         //assertEquals(section1.getCourse(), defaultCourse);
         assertEquals(section1.getCRN(), defaultCRN);

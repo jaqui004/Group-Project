@@ -1,6 +1,6 @@
 package edu.odu.cs.cs350.pne;
 
-import java.io.File;
+//import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
@@ -42,6 +42,8 @@ public class Section {
 		building = "";
 		room = "";
 		snapshotList = new LinkedList <Snapshot>();
+		subj="";
+		courNum="";
 	}
 
 	public Section(String semestDir, String dateExct ){
@@ -88,6 +90,8 @@ public class Section {
 	public String getLink(){return link;}
 	public String getBuilding(){return building;}
 	public String getRoom(){return room;}
+	public String getSubj(){return subj;}
+	public String getCournum(){return courNum;}
 	public LinkedList <Snapshot>  getSnapshotList(){return snapshotList;}
 	
 	// Set values functions
@@ -115,7 +119,9 @@ public class Section {
 		while (iter.hasNext() || !found){
 			Snapshot current = iter.next();
 			if(current.getSemesterDirectory()== dateDir
-				&& current.getDate()== date){				
+				&& current.getDate()== date){
+					
+					this.read_SectionRecords(current);			
 					return current;
 					
 				}
@@ -159,38 +165,50 @@ public class Section {
 		//use scanner to read and initialze records
 		
 		Scanner x;
-		boolean found = false;
-		int y = 0;
+		//boolean found = false;
+		//int y = 0;
 		int count  =0;
 		
 		
 		//Setup exception handler
 		try
 		{
-			x = new Scanner(new File(snapsSht.getTargetFile().getPath()));
-			//x.useDelimiter("[,]");
+			x = new Scanner(snapsSht.getTargetFile());
+			x.useDelimiter("[,]");
 		
 			
-			while(x.hasNext() && !found)
+			while(x.hasNext() && count!=7)
 			{
 				
-				String tmp=x.nextLine();
-				Scanner strScan = new Scanner(tmp).useDelimiter(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-
-				CRN = null;  // new code start
-				String subj = null;
-				String courNum = null; // new code end
-
-				while (strScan.hasNext()){
-					String token = strScan.next().trim().replaceAll("\"", "");
-					if (count == 1) { // new code start
-					CRN = token;
-					} else if (count ==2) {
-						subj = token;
-					} else if (count == 3) {
-						courNum = token;
+				String tmp=x.next();
+				Scanner strScan = new Scanner(tmp);
+				
+				///strScan.useDelimiter("");
+				///CRN = null;  // new code start
+				//String subj = null;
+				//String courNum = null; // new code end
+				String token = strScan.next();
+				if (count ==1){
+				//while (strScan.hasNext()){
+						//String token = strScan.next();
+						// if (count == 1) { // new code start
+						this.setCRN(token);
+					//}
+				}
+				else if (count ==2) {
+					while (strScan.hasNext()){
+						///String token = strScan.next();
+						this.setSubj(token);
+					} 
+				}
+				else if (count == 3) {
+					while (strScan.hasNext()){
+						//String token = strScan.next();
+						//courNum = token;
+						this.setCourNum(token);
 					}
-					 count++; // new code end
+					//count++; // new code end
+					///strScan.close();
 				}
 				strScan.close();
 				//String tmp=x.next().trim().replaceAll("\"","");
@@ -201,19 +219,19 @@ public class Section {
 					//conditions for when at certian positions
 
 				//for CRN
-					if(y==1){
-						this.CRN= tmp;
-						count++;
-					} 
-					//course subj
-					if(y==2){
-						this.secCour.setSubj(tmp);
-						count++;	
-					}
-					//course number
-					if(y==3){
-					this.secCour.setCourNum(tmp);
-						count++;
+					// if(y==1){
+					// 	this.CRN= tmp;
+					// 	count++;
+					// } 
+					// //course subj
+					// if(y==2){
+					// 	this.secCour.setSubj(tmp);
+					// 	count++;	
+					// }
+					// //course number
+					// if(y==3){
+					// this.secCour.setCourNum(tmp);
+					count++;
 
 					Section section = new Section();
 					section.setCRN(this.CRN);
@@ -221,18 +239,18 @@ public class Section {
 					section.setCourNum(this.secCour.getCourNum());
 					
 					sectionVector.add(section);
-				
+					
 				}  
 
 				x.close();
 			}
-		}
+		
 		catch(Exception e)
 		{
 			System.out.println("File not found");
 		}
 	
-
+	}
 	// Creates a clone of a section
 	// public Section clone(){
 	// 	// Create new section object with variables

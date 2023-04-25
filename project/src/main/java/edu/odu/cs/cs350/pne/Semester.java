@@ -1,7 +1,7 @@
 package edu.odu.cs.cs350.pne;
 
 import java.util.LinkedList;
-import java.util.Scanner;
+//import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -70,10 +70,10 @@ public class Semester {
 
     void checkDates() {
         String fileName = "dates.txt";
-        File directory = new File (directoryPath);
+        File directory = new File (fileName);
         File file = new File(directory, "dates.txt");
 
-        if (file.exist()) {
+        if (file.exists()==true) {
     
         }
     
@@ -102,7 +102,7 @@ public class Semester {
         //check for dates document in each semester directory-- throw exception if missing dates.txt
         //read the dates in txt--> store into regDate and regDeadline
         
-        String file = "dates.txt";
+       // String file = "dates.txt";
         
        /*  Scanner in = new Scanner(new File (file));
         
